@@ -1,0 +1,55 @@
+---
+import { navItems, actionLinks } from '../data/nav-links';
+import MobileMenu from './react/mobile-menu.tsx';
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 bg-bg-primary/90 backdrop-blur-md border-b border-border">
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+    <!-- Logo -->
+    <a href="/" class="flex items-center gap-2 shrink-0">
+      <img src="/logogachcloud.png" alt="GachCloud" class="h-8 w-auto" />
+      <span class="text-lg font-bold font-heading hidden sm:inline">GachCloud</span>
+    </a>
+
+    <!-- Desktop nav links -->
+    <ul class="hidden lg:flex items-center gap-1">
+      {navItems.map((item) => (
+        <li>
+          <a
+            href={item.href}
+            class="px-3 py-2 text-sm text-text-secondary hover:text-text-primary rounded-lg transition-colors duration-200"
+            {...(item.href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+          >
+            {item.name}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <!-- Desktop action buttons -->
+    <div class="hidden lg:flex items-center gap-3">
+      <a
+        href={actionLinks.gamePanel.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="px-4 py-2 text-sm font-medium border border-border rounded-lg text-text-primary hover:border-brand-red/50 hover:text-brand-red transition-all duration-200 cursor-pointer"
+      >
+        {actionLinks.gamePanel.label}
+      </a>
+      <a
+        href={actionLinks.login.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="px-4 py-2 text-sm font-medium bg-gradient-to-r from-brand-red to-brand-orange text-white rounded-lg hover:brightness-110 transition-all duration-200 shadow-lg shadow-brand-red/25 cursor-pointer"
+      >
+        {actionLinks.login.label}
+      </a>
+    </div>
+
+    <!-- Mobile menu (React island) -->
+    <MobileMenu client:media="(max-width: 1023px)" />
+  </nav>
+</header>
+
+<!-- Spacer for fixed navbar -->
+<div class="h-16" aria-hidden="true"></div>

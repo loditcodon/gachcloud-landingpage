@@ -1,0 +1,34 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'GachCloud - Hosting Minecraft Chất Lượng Cao',
+  description = 'Dịch vụ hosting Minecraft hiệu suất cao, giá rẻ tại Việt Nam. Khởi tạo tức thì, hỗ trợ 24/7, bảo vệ DDoS miễn phí.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+
+    <!-- Google Fonts: Space Grotesk + Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>{title}</title>
+  </head>
+  <body class="bg-bg-primary text-text-primary antialiased">
+    <slot />
+  </body>
+</html>
